@@ -1,60 +1,53 @@
-//package Homework_1;
-
 /**
  * This program is intended for search roots of a quadratic equation.
  */
 import java.util.*;
-
 public class QuadraticEquation {
-
-    public static void main(String[] args){
-
-        // Initialization of parameters
-        Scanner scanner = new Scanner(System.in);
-        double a;
-        double b;
-        double c;
-
+    // This method required for the use of methods to input the coefficients of quadratic equation and finding roots.
+    public static void main(String[] args) {
         // Data input
-        System.out.print("Please, enter coefficients of quadratic equation:\na = ");
-        a = scanner.nextDouble();
-        if (a == 0) {
-            System.out.print("You entered 'a' = 0.\nThanks for all :)");
-            //a = scanner.nextInt();
-            System.exit(0);
-        }
-        System.out.print("b = ");
-        b = scanner.nextDouble();
-        System.out.print("c = ");
-        c = scanner.nextDouble();
-        System.out.println("Your quadratic equation is: ("+a+")x^2 + ("+b+")x + ("+c+")");
-
+        System.out.println("Please, enter coefficients of quadratic equation:");
+        double[] coefficients = new double[3];
+        coefficients = inputCoefficients(coefficients);
+        System.out.println("Your quadratic equation is: (" + coefficients[0] + ")x^2 + (" + coefficients[1]
+                + ")x + (" + coefficients[2] + ")");
         // Operation for searching roots of quadratic equation
-        searchRootsOfQuadraticEquation(a,b,c);
+        searchRootsOfQuadraticEquation(coefficients);
     }
-
-    public static void searchRootsOfQuadraticEquation(double a, double b, double c){
-
+    // This method is intended to enter the coefficients of quadratic equation
+    public static double[] inputCoefficients(double[] coefficients) {
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < coefficients.length; i++) {
+            System.out.print((i + 1) + " coefficient = ");
+            coefficients[i] = scanner.nextDouble();
+            if (i == 0) {
+                if (coefficients[i] == 0.0) {
+                    System.out.print("You entered 'a' = 0.\nThanks for all.");
+                    System.exit(1);
+                }
+            }
+        }
+        return coefficients;
+    }
+    // This method search roots of quadratic equation
+    public static void searchRootsOfQuadraticEquation(double[] coefficients){
         // Initialization of parameters
         double firstRoot;
         double secondRoot;
-        double delta = Math.pow(b,2) - 4*a*c;
-
+        double delta = Math.pow(coefficients[1],2) - 4*coefficients[0]*coefficients[2];
         // Search roots under certain conditions
-        if(delta > 0){
-            firstRoot = (-b+Math.sqrt(delta))/(2*a);
-            secondRoot = (-b-Math.sqrt(delta))/(2*a);
-            System.out.println("Roots of quadratic equation:\nFirst root = " + firstRoot + ";\nSecond root = " + secondRoot + ";");
-
+        if(delta > 0.00001){
+            firstRoot = (-coefficients[1]+Math.sqrt(delta))/(2*coefficients[0]);
+            secondRoot = (-coefficients[1]-Math.sqrt(delta))/(2*coefficients[0]);
+            System.out.println("Roots of quadratic equation:\nFirst root = " +
+                    firstRoot + ";\nSecond root = " + secondRoot + ";");
         }
-        else if(delta == 0){
-            firstRoot = (-b);
-            firstRoot /= (2*a);
-            //secondRoot = firstRoot;
-            //System.out.println("Roots of quadratic equation:\nFirst root = " + firstRoot + ";\nSecond root = " + secondRoot + ";");
+        else if(delta < 0.00001 && delta > -0.00001){
+            firstRoot = (-coefficients[1]);
+            firstRoot /= (2*coefficients[0]);
             System.out.println("Root of quadratic equation:\nRoot = " + firstRoot + ";");
         }
-        else if(delta < 0){
+        else if(delta < -0.00001){
             System.out.println("Quadratic equation has no real roots.");
         }
     }
