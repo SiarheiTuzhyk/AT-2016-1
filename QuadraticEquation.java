@@ -1,11 +1,21 @@
-/**
- * This program is intended for search roots of a quadratic equation.
- */
 import java.util.*;
+/**
+ *  This class is intended for search roots of a quadratic equation.
+ *  Entrance point to the program.
+ *
+ *  @author Siarhei Tuzhyk
+ *  @version 1.1
+ *  @since 03-10-2016
+ */
 public class QuadraticEquation {
-    // Add constant observational error
+    // Add constant observational error, instead of comparing the variables with zero. Number is very close to 0.
     public static final double EPS = 10e-15;
-    // This method required for the use of methods to input the coefficients of quadratic equation and finding roots.
+    /**
+     * Entrance to solution.
+     * This method required for the use of methods to input the coefficients of quadratic equation and finding roots.
+     *
+     * @param args arguments from command line.
+     */
     public static void main(String[] args) {
         // Data input
         System.out.println("Please, enter coefficients of quadratic equation:");
@@ -14,7 +24,12 @@ public class QuadraticEquation {
         // Operation for searching roots of quadratic equation
         searchRootsOfQuadraticEquation(coefficients);
     }
-    // This method is intended to enter the coefficients of quadratic equation
+    /**
+     * This method is intended to enter the coefficients of quadratic equation.
+     *
+     * @param coefficients array of coefficients of quadratic equation.
+     * @return array with input variables.
+    */
     public static double[] inputCoefficients(double[] coefficients) {
         Scanner scanner = new Scanner(System.in);
         try {
@@ -37,7 +52,11 @@ public class QuadraticEquation {
         }
         return coefficients;
     }
-    // This method search roots of quadratic equation
+    /**
+     * This method search roots of quadratic equation and display result of searching.
+     *
+     * @param coefficients array with coefficients of quadratic equation.
+    */
     public static void searchRootsOfQuadraticEquation(double[] coefficients){
         // Initialization of parameters
         double firstRoot;
