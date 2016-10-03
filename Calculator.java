@@ -27,7 +27,7 @@ public class Calculator {
             System.out.println("Amount of two numbers: " + amount + ";\nDifference of two numbers: " + difference +
                     ";\nComposition of two numbers: " + composition + ";");
             // Check the denominator in the division
-            if (secondNumber < 0.00001 && secondNumber > -0.00001) {
+            if(Double.isInfinite(division)) {
                 System.out.println("You can't divide by zero! ");
             }
             else {
