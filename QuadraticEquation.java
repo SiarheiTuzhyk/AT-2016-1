@@ -4,12 +4,13 @@ import java.util.*;
  *  Entrance point to the program.
  *
  *  @author Siarhei Tuzhyk
- *  @version 1.1
- *  @since 03-10-2016
+ *  @version 1.2
+ *  @since 04-10-2016
  */
 public class QuadraticEquation {
     // Add constant observational error, instead of comparing the variables with zero. Number is very close to 0.
     public static final double EPS = 10e-15;
+
     /**
      * Entrance to solution.
      * This method required for the use of methods to input the coefficients of quadratic equation and finding roots.
@@ -24,6 +25,7 @@ public class QuadraticEquation {
         // Operation for searching roots of quadratic equation
         searchRootsOfQuadraticEquation(coefficients);
     }
+
     /**
      * This method is intended to enter the coefficients of quadratic equation.
      *
@@ -36,22 +38,21 @@ public class QuadraticEquation {
             for (int i = 0; i < coefficients.length; i++) {
                 System.out.print((i + 1) + " coefficient = ");
                 coefficients[i] = scanner.nextDouble();
-                // Check first coefficients equal to zero
-                if (i == 0) {
-                    if (coefficients[i] < EPS && coefficients[i] > -EPS) {
-                        System.out.print("You entered 'a' = 0.\nThanks for all.");
-                        System.exit(1);
-                    }
-                }
+            }
+            // Check first coefficients equal to zero
+            if (coefficients[0] < EPS && coefficients[0] > -EPS) {
+                System.out.print("You entered 'a' = 0.\nThanks for all.");
+                System.exit(1);
             }
             // Output received quadratic equation
             System.out.println("Your quadratic equation is: (" + coefficients[0] + ")x^2 + (" + coefficients[1]
                     + ")x + (" + coefficients[2] + ")");
         } catch (Exception ex) {
-            System.out.println("I/O error.\nThanks for all.");
+            System.out.println("Input error.\nThanks for all.");
         }
         return coefficients;
     }
+
     /**
      * This method search roots of quadratic equation and display result of searching.
      *

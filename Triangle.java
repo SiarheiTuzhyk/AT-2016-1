@@ -4,12 +4,13 @@ import java.util.*;
  *  Entrance point to the program.
  *
  *  @author Siarhei Tuzhyk
- *  @version 1.1
+ *  @version 1.2
  *  @since 04-10-2016
  */
 public class Triangle {
     // Add constant observational error, instead of comparing the variables with zero. Number is very close to 0.
     public static final double EPS = 10e-15;
+
     /**
      * Entrance to solution.
      * This method required for the use of methods to input sides and identify the type of the triangle.
@@ -27,6 +28,7 @@ public class Triangle {
             System.out.println("Triangle isn't exist.\nThanks for all.");
         }
     }
+
     /**
      * This method is intended to enter the coefficients of quadratic equation.
      *
@@ -38,17 +40,19 @@ public class Triangle {
         try {
             System.out.println("Please, enter line segments of the triangle: ");
             for (int i = 0; i < sides.length; i++) {
-                System.out.print((i + 1) + " segment = ");
+                System.out.print((i + 1) + " line segment = ");
                 sides[i] = scanner.nextDouble();
+                // Checking the existence of line segment
                 isReallyLineSegments(sides[i]);
             }
         } catch (Exception ex) {
-            System.out.println("I/O error.");
+            System.out.println("Input error.");
         }
         return sides;
     }
+
     /**
-     * Method check the entered number.
+     * Method checking the existence of line segment
      *
      * @param x input line segment
      * */
@@ -58,6 +62,7 @@ public class Triangle {
             System.exit(1);
         }
     }
+
     /**
      * Method check the existence of a triangle.
      *
@@ -75,6 +80,7 @@ public class Triangle {
             return false;
         }
     }
+
     /**
      * Method determines type of triangle and print it.
      *
@@ -92,6 +98,7 @@ public class Triangle {
         }
         System.out.println("Thanks for all.");
     }
+
     /**
      * Method checking on is isosceles type of triangle.
      *
