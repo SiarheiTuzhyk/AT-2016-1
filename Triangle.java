@@ -1,8 +1,10 @@
-import java.util.Scanner;
 /**
  *  This program is intended to identify the type of the triangle.
  */
+import java.util.Scanner;
 public class Triangle {
+    // Add constant observational error
+    public static final double EPS = 10e-15;
     // This method required for the use of methods to input sides and identify the type of the triangle.
     public static void main(String[] args) {
         // Data input
@@ -18,11 +20,15 @@ public class Triangle {
     // This method is intended to enter the coefficients of quadratic equation
     public static double[] inputSides(double[] sides) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please, enter line segments of the triangle: ");
-        for (int i = 0; i < sides.length; i++) {
-            System.out.print((i+1)+" segment = ");
-            sides[i] = scanner.nextDouble();
-            isReallyLineSegments(sides[i]);
+        try {
+            System.out.println("Please, enter line segments of the triangle: ");
+            for (int i = 0; i < sides.length; i++) {
+                System.out.print((i + 1) + " segment = ");
+                sides[i] = scanner.nextDouble();
+                isReallyLineSegments(sides[i]);
+            }
+        } catch (Exception ex) {
+            System.out.println("I/O error.");
         }
         return sides;
     }
