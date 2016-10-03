@@ -11,28 +11,30 @@ public class Calculator {
         } else if (args.length < 2) {
             System.out.println("Enter more numbers.");
             System.exit(1);
-        } else {
-            double firstNumber;
-            double secondNumber;
-            try {
-                // Conversion from 'String' to 'double'
-                firstNumber = Double.parseDouble(args[0]);
-                secondNumber = Double.parseDouble(args[1]);
-                // Initialization and calculating amount, difference, composition and division
-                double amount;
-                amount = calculateAmount(firstNumber, secondNumber);
-                double difference;
-                difference = calculateDifference(firstNumber, secondNumber);
-                double composition;
-                composition = calculateComposition(firstNumber, secondNumber);
-                double division;
-                division = calculateDivision(firstNumber, secondNumber);
-                // Output results to the screen
-                System.out.println("Amount of two numbers: " + amount + ";\nDifference of two numbers: " + difference +
-                        ";\nComposition of two numbers: " + composition + ";\nDivision of two numbers: " + division + ";");
-            } catch (Exception ex) {
-                System.out.println("I/0 error.");
+        }
+        double firstNumber;
+        double secondNumber;
+        try {
+            // Conversion from 'String' to 'double'
+            firstNumber = Double.parseDouble(args[0]);
+            secondNumber = Double.parseDouble(args[1]);
+            // Initialization and calculating amount, difference, composition and division
+            double amount = calculateAmount(firstNumber, secondNumber);
+            double difference = calculateDifference(firstNumber, secondNumber);
+            double composition = calculateComposition(firstNumber, secondNumber);
+            double division = calculateDivision(firstNumber, secondNumber);
+            // Output results to the screen
+            System.out.println("Amount of two numbers: " + amount + ";\nDifference of two numbers: " + difference +
+                    ";\nComposition of two numbers: " + composition + ";");
+            // Check the denominator in the division
+            if (secondNumber < 0.00001 && secondNumber > -0.00001) {
+                System.out.println("You can't divide by zero! ");
             }
+            else {
+                System.out.println("Division of two numbers: " + division + ";");
+            }
+        } catch (Exception ex) {
+            System.out.println("I/0 error.");
         }
     }
 
@@ -53,12 +55,6 @@ public class Calculator {
 
     // Method for calculating the division
     public static double calculateDivision(double first, double second) {
-        if (second < 0.00001 && second > -0.00001) {
-            System.out.println("You can't divide by zero! ");
-            return 0;
-        }
-        else {
             return first / second;
-        }
     }
 }
