@@ -31,7 +31,6 @@ public class QuadraticEquation {
         // Operation for searching roots of quadratic equation
         searchRootsOfQuadraticEquation(coefficients);
     }
-
     /**
      * This method is intended to enter the coefficients of quadratic equation.
      *
@@ -58,7 +57,6 @@ public class QuadraticEquation {
         }
         return coefficients;
     }
-
     /**
      * This method search roots of quadratic equation and display result of searching.
      *
@@ -81,7 +79,6 @@ public class QuadraticEquation {
             System.out.println("Quadratic equation has no real roots.");
         }
     }
-
     /**
      * This method search roots of quadratic equation, if discriminant > 0
      *
@@ -97,7 +94,6 @@ public class QuadraticEquation {
         System.out.println("Roots of quadratic equation:\nFirst root = " +
                 firstRoot + ";\nSecond root = " + secondRoot + ";");
     }
-
     /**
      * This method search only one root of quadratic equation, if discriminant = 0
      *
