@@ -6,16 +6,16 @@ import java.util.*;
  *  Entrance point to the program.
  *
  *  @author Siarhei Tuzhyk
- *  @version 1.3
+ *  @version 1.4
  *  @since 04-10-2016
  */
+
 public class QuadraticEquation {
-    // Add constant observational error, instead of comparing the variables with zero. Number is very close to 0.
+    // Numbers, which we'll need to enter
     public static final int NUMBERS = 3;
-    public static final BigDecimal ZERO = new BigDecimal(0);
+    static final BigDecimal ZERO;
     public static final BigDecimal TWO = new BigDecimal(2);
     public static final BigDecimal MINUS_ONE = new BigDecimal(-1);
-    //public static final BigDecimal ZERO
     /**
      * Entrance to solution.
      * This method required for the use of methods to input the coefficients of quadratic equation and finding roots.
@@ -23,12 +23,9 @@ public class QuadraticEquation {
      * @param args arguments from command line.
      */
     public static void main(String[] args) {
-        // Data input
-        System.out.println("Please, enter coefficients of quadratic equation:");
         ArrayList <BigDecimal> coefficients = new ArrayList <BigDecimal>(NUMBERS);
         // Enter the coefficients of quadratic equation.
         coefficients = inputCoefficients(coefficients);
-        // Operation for searching roots of quadratic equation
         searchRootsOfQuadraticEquation(coefficients);
     }
     /**
@@ -38,6 +35,7 @@ public class QuadraticEquation {
      * @return arraylist with input variables.
     */
     public static ArrayList <BigDecimal> inputCoefficients(ArrayList <BigDecimal> coefficients) {
+        System.out.println("Please, enter coefficients of quadratic equation:");
         Scanner scanner = new Scanner(System.in);
         try {
             for (int i = 0; i < NUMBERS; i++) {
