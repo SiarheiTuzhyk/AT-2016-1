@@ -6,14 +6,13 @@ import java.util.*;
  *  Entrance point to the program.
  *
  *  @author Siarhei Tuzhyk
- *  @version 1.4
- *  @since 04-10-2016
+ *  @version 1.5
+ *  @since 05-10-2016
  */
 
 public class QuadraticEquation {
     // Numbers, which we'll need to enter
     public static final int NUMBERS = 3;
-    static final BigDecimal ZERO;
     public static final BigDecimal TWO = new BigDecimal(2);
     public static final BigDecimal MINUS_ONE = new BigDecimal(-1);
     /**
@@ -26,6 +25,11 @@ public class QuadraticEquation {
         ArrayList <BigDecimal> coefficients = new ArrayList <BigDecimal>(NUMBERS);
         // Enter the coefficients of quadratic equation.
         coefficients = inputCoefficients(coefficients);
+        // Check first coefficients equal to zero
+        if (coefficients.get(0).compareTo(BigDecimal.ZERO) == 0) { // 'a' = 0
+            System.out.print("You entered 'a' = 0.\nThanks for all.");
+            System.exit(1);
+        }
         searchRootsOfQuadraticEquation(coefficients);
     }
     /**
@@ -41,11 +45,6 @@ public class QuadraticEquation {
             for (int i = 0; i < NUMBERS; i++) {
                 System.out.print((i + 1) + " coefficient = ");
                 coefficients.add(i,new BigDecimal(scanner.next()));
-            }
-            // Check first coefficients equal to zero
-            if (coefficients.get(0).compareTo(ZERO) == 0) { // 'a' = 0
-                System.out.print("You entered 'a' = 0.\nThanks for all.");
-                System.exit(1);
             }
             // Output received quadratic equation
             System.out.println("Your quadratic equation is: (" + coefficients.get(0) + ")x^2 + (" + coefficients.get(1)
@@ -67,13 +66,13 @@ public class QuadraticEquation {
         BigDecimal minusB = coefficients.get(1).multiply(MINUS_ONE); // -1*b
         BigDecimal twoMultiplyA = TWO.multiply(coefficients.get(0)); // 2*a
         // Search roots under certain conditions
-        if(delta.compareTo(ZERO) == 1){ // delta > 0
+        if(delta.compareTo(BigDecimal.ZERO) == 1){ // delta > 0
             rootsWhenDeltaMoreThanZero(delta,minusB,twoMultiplyA);
         }
-        else if(delta.compareTo(ZERO) == 0){ // delta = 0
+        else if(delta.compareTo(BigDecimal.ZERO) == 0){ // delta = 0
             rootWhenDeltaEqualsZero(minusB,twoMultiplyA);
         }
-        else if(delta.compareTo(ZERO) == -1){ // delta < 0
+        else if(delta.compareTo(BigDecimal.ZERO) == -1){ // delta < 0
             System.out.println("Quadratic equation has no real roots.");
         }
     }

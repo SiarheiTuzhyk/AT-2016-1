@@ -6,13 +6,12 @@ import java.util.*;
  *  Entrance point to the program.
  *
  *  @author Siarhei Tuzhyk
- *  @version 1.3
- *  @since 04-10-2016
+ *  @version 1.4
+ *  @since 05-10-2016
  */
 public class Triangle {
     // Numbers, which we'll need to enter
     public static final int NUMBERS = 3;
-    static final BigDecimal ZERO;
     /**
      * Entrance to solution.
      * This method required for the use of methods to input sides and identify the type of the triangle.
@@ -22,6 +21,10 @@ public class Triangle {
     public static void main(String[] args) {
         ArrayList <BigDecimal> sides = new ArrayList <BigDecimal>(NUMBERS);
         sides = inputSides(sides);
+        // Checking the existence of line segment
+        for(int i=0;i<NUMBERS;i++) {
+            isReallyLineSegments(sides.get(i));
+        }
         // Check the existence of a triangle
         if (isItTriangle(sides)) {
             whatTypeOfTriangle(sides);
@@ -42,8 +45,6 @@ public class Triangle {
             for (int i = 0; i < NUMBERS; i++) {
                 System.out.print((i + 1) + " line segment = ");
                 sides.add(i,new BigDecimal(scanner.next()));
-                // Checking the existence of line segment
-                isReallyLineSegments(sides.get(i));
             }
         } catch (NumberFormatException ex) {
             System.out.println("You didn't enter a number.");
@@ -56,7 +57,7 @@ public class Triangle {
      * @param x input line segment
      * */
     public static void isReallyLineSegments(BigDecimal x){
-        if (x.compareTo(ZERO) == 0 || x.compareTo(ZERO) == -1 ) {    // (x<=0)
+        if (x.compareTo(BigDecimal.ZERO) == 0 || x.compareTo(BigDecimal.ZERO) == -1 ) {    // (x<=0)
             System.out.print("Triangle with such line segment doesn't exist.\nThanks for all.");
             System.exit(1);
         }
