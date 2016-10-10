@@ -1,13 +1,13 @@
 package rules;
 import java.util.regex.*;
 /**
- * Class for rule, when string haven't a numbers.
+ * Class for rule, when string haven't digits.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
- * @since 08.10.2016
+ * @version 1.1
+ * @since 10.10.2016
  */
-public class NotHaveNumbers extends RulesBuild {
+public class NotHaveNumbers extends RulesValidate {
     /**
      * Method checks if string correspond to this rule.
      *
@@ -19,11 +19,7 @@ public class NotHaveNumbers extends RulesBuild {
     public boolean checkRule(String enteredString) {
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher = pattern.matcher(enteredString);
-        if (matcher.find()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !matcher.find();
     }
 
     /**

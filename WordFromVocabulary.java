@@ -1,16 +1,16 @@
 package rules;
+
 import java.util.ArrayList;
 import java.util.regex.*;
+
 /**
  * Class for rule, when string have words from vocabulary.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
- * @since 08.10.2016
+ * @version 1.1
+ * @since 10.10.2016
  */
-public class WordFromVocabulary extends RulesBuild {
-    // Count of founding words in string
-    private static int count = 0;
+public class WordFromVocabulary extends RulesValidate {
     // Vocabulary words
     private final static String KEY = new String("key");
     private final static String SCHOOL = new String("school");
@@ -33,14 +33,12 @@ public class WordFromVocabulary extends RulesBuild {
         vocabulary.add(TRAIN);
         vocabulary.add(BALL);
         vocabulary.add(BARCELONA);
+        // Count of founding words in string
+        int count = 0;
         for (String x : vocabulary) {
-            checkVocabularyAtString(enteredWords, x);
+            count += checkVocabularyAtString(enteredWords, x, count);
         }
-        if (count > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return (count > 0);
     }
 
     /**
@@ -49,12 +47,13 @@ public class WordFromVocabulary extends RulesBuild {
      * @param enteredWords   entered string from keyboard
      * @param vocabularyWord word from Vocabulary
      */
-    private static void checkVocabularyAtString(String enteredWords, String vocabularyWord) {
+    private static int checkVocabularyAtString(String enteredWords, String vocabularyWord, int count) {
         Pattern pattern = Pattern.compile(vocabularyWord);
         Matcher matcher = pattern.matcher(enteredWords);
         if (matcher.find()) {
-            ++count;
+            count++;
         }
+        return count;
     }
 
     /**

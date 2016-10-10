@@ -1,13 +1,13 @@
 package rules;
 import java.util.regex.*;
 /**
- * Class for rule, when string have only a numbers.
+ * Class for rule, when string have only digits.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
- * @since 08.10.2016
+ * @version 1.1
+ * @since 10.10.2016
  */
-public class HaveOnlyNumbers extends RulesBuild {
+public class HaveOnlyNumbers extends RulesValidate {
     /**
      * Method checks if string correspond to this rule.
      *

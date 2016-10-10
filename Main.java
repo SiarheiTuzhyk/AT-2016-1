@@ -5,8 +5,8 @@ import java.util.ArrayList;
  * This class calls methods of other classes.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
- * @since 08-10-2016
+ * @version 1.1
+ * @since 10-10-2016
  */
 public class Main {
     /**
@@ -15,8 +15,13 @@ public class Main {
      * @param args command-line arguments
      */
     public static void main(String[] args) {
-        String enteredString = InputArguments.inputWordsFromKeyboard();
-        ArrayList<RulesBuild> rules = Builder.initRules();
-        Builder.checkStringToRules(rules, enteredString);
+        try {
+            String enteredString = InputArguments.inputWordsFromKeyboard();
+            ArrayList<RulesValidate> rules = CheckRules.initRules();
+            CheckRules.checkStringToRules(rules, enteredString);
+        }
+        catch (Exception e) {
+            System.out.println("Program error.");
+        }
     }
 }
