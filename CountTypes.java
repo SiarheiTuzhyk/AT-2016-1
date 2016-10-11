@@ -6,10 +6,12 @@ import java.util.ArrayList;
  * Class for count types of products
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
+ * @version 1.1
  * @since 11.10.2016
  */
 public class CountTypes extends InstructionBuild {
+    private final String COMMAND = "count types";
+
     /**
      * Method for doing command.
      *
@@ -47,13 +49,17 @@ public class CountTypes extends InstructionBuild {
     /**
      * Checking command for this class.
      *
-     * @param command entered command
+     * @param command  entered command
+     * @param products entered products
      * @return <>true</> if class can do this command
      * <>false</> otherwise
      */
     @Override
-    public boolean canDo(String command) {
-        return command.equals("count types");
+    public boolean canExecute(String command, ArrayList<Product> products) {
+        if (command.equals(COMMAND)) {
+            doCommand(products);
+        }
+        return command.equals(COMMAND);
     }
 
     /**

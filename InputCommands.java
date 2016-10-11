@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Class for input information.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
+ * @version 1.1
  * @since 11.10.2016
  */
 public class InputCommands {
@@ -18,14 +18,14 @@ public class InputCommands {
      */
     public ArrayList<Product> inputParameters() {
         ArrayList<Product> products = new ArrayList<>();
-        boolean inputProducts = true;
-        while (inputProducts) {
+        boolean willInputProduct = true;
+        while (willInputProduct) {
             System.out.println("Please, input your product: ");
             // Calls method for input fields of Product class.
             products.add(inputProduct());
             // Repeat input of products.
             System.out.println("Would you like add some product to your basket?\nYes - y    No - others symbols");
-            inputProducts = canDoNextCommand();
+            willInputProduct = canDoNextCommand();
         }
         return products;
     }

@@ -6,10 +6,12 @@ import java.util.ArrayList;
  * Class for calculation average price of all products.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
+ * @version 1.1
  * @since 11.10.2016
  */
 public class AveragePriceOfAllProducts extends InstructionBuild {
+    private final String COMMAND = "average price";
+
     /**
      * Method for doing command.
      *
@@ -32,13 +34,17 @@ public class AveragePriceOfAllProducts extends InstructionBuild {
     /**
      * Checking command for this class.
      *
-     * @param command entered command
+     * @param command  entered command
+     * @param products entered products
      * @return <>true</> if class can do this command
      * <>false</> otherwise
      */
     @Override
-    public boolean canDo(String command) {
-        return command.equals("average price");
+    public boolean canExecute(String command, ArrayList<Product> products) {
+        if (command.equals(COMMAND)) {
+            doCommand(products);
+        }
+        return command.equals(COMMAND);
     }
 
     /**

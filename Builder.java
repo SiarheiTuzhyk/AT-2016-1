@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Class for build commands.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
+ * @version 1.1
  * @since 11.10.2016
  */
 public class Builder {
@@ -17,13 +17,11 @@ public class Builder {
      * @param inCom    object of InputCommands class
      */
     public void commands(ArrayList<Product> products, InputCommands inCom) {
-        boolean commandTrue = true;
-        while (commandTrue) {
+        boolean willNextEnterOfCommand = true;
+        while (willNextEnterOfCommand) {
             String command = inCom.inputCommands();
-            commandTrue = doCommands(command, products);
-            if (commandTrue == false) {
-                break;
-            }
+            int count = executeCommands(command, products);
+            willNextEnterOfCommand = checkExecutionOfCommand(count, command);
         }
     }
 
@@ -32,20 +30,29 @@ public class Builder {
      *
      * @param command  input command, which entered user
      * @param products arraylist of entered products
-     * @return <>true</> if method worked without incident
-     * <>else</> if command equals to 'exit'
      */
-    public boolean doCommands(String command, ArrayList<Product> products) {
-        // Check for count of doing command.
+    public int executeCommands(String command, ArrayList<Product> products) {
+        // Check count of command execution
         int count = 0;
-        boolean commandTrue = true;
         ArrayList<InstructionBuild> commands = buildCommands();
         for (InstructionBuild instruction : commands) {
-            if (instruction.canDo(command)) {
-                instruction.doCommand(products);
+            if (instruction.canExecute(command, products)) {
                 count++;
             }
         }
+        return count;
+    }
+
+    /**
+     * Method for check number of command execution.
+     *
+     * @param count   number of command execution
+     * @param command entered command
+     * @return <>true</> if method worked without incident
+     * <>else</> if method worked with incident
+     */
+    private boolean checkExecutionOfCommand(int count, String command) {
+        boolean commandTrue = true;
         // if count = 0, that command equals to 'exit', else command not identified.
         if (count == 0) {
             if (command.equals("exit") || command.equals("Exit") || command.equals("EXIT")) {

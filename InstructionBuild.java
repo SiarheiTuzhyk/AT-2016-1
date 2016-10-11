@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Abstract class of Commands.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
+ * @version 1.1
  * @since 11.10.2016
  */
 public abstract class InstructionBuild {
@@ -20,11 +20,12 @@ public abstract class InstructionBuild {
     /**
      * Checking command for this class.
      *
-     * @param command entered command
+     * @param command  entered command
+     * @param products entered products
      * @return <>true</> if class can do this command
      * <>false</> otherwise
      */
-    public abstract boolean canDo(String command);
+    public abstract boolean canExecute(String command, ArrayList<Product> products);
 
     /**
      * Method for print result of command.
