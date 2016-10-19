@@ -4,18 +4,20 @@ import java.util.ArrayList;
  * Class for validate entered ip addresses.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
+ * @version 1.1
  * @since 19.10.2016
  */
 public class ValidateAddress {
     /**
      * Method for validate entered ip address.
      *
-     * @param servers entered ip address of server.
+     * @param servers entered servers.
      * @throws Exception if have input errors with address of server.
      */
-    public void validateIpAddress(ArrayList<String> servers) throws Exception {
-        for (String ip : servers) {
+    public void validateIpAddress(ArrayList<Server> servers) throws Exception {
+        String ip;
+        for (Server server : servers) {
+            ip = server.getAddress();
             for (int i = 0; i < 3; i++) {
                 int separatorIndex = ip.indexOf(".");
                 if (separatorIndex == -1) {
