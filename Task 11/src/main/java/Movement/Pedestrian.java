@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Class of pedestrian. Implements Move interface.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
+ * @version 1.1
  * @since 26.10.2016
  */
 public class Pedestrian implements Move {
@@ -30,12 +30,11 @@ public class Pedestrian implements Move {
      * @return time for passed distance.
      */
     public double howMuchTime(ArrayList<CheckPoint> checkPoints) {
-        double distance = 0;
+        double time = 0;
         Distance distanceClass = new Distance();
         for (int i = 1; i < checkPoints.size() - 1; i++) {
-            distance += distanceClass.distanceBetweenCheckpoint(checkPoints.get(i - 1), checkPoints.get(i));
+            time += (distanceClass.distanceBetweenCheckpoint(checkPoints.get(i - 1), checkPoints.get(i)))/averageSpeed;
         }
-        double time = distance / averageSpeed;
         return Math.rint(1000.0 * time) / 1000.0;
     }
 
