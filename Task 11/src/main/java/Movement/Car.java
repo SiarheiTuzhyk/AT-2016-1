@@ -6,10 +6,15 @@ import java.util.ArrayList;
  * Class of car. Extends Vehicle abstract class, which include Move interface.
  *
  * @author Siarhei Tuzhyk
- * @version 1.1
- * @since 26.10.2016
+ * @version 1.2
+ * @since 27.10.2016
  */
 public class Car extends Vehicle {
+
+    //Constant values
+    private final double AVERAGESPEED = 80;
+    private final double FUELCONSUMPTION = 0;
+    private final double PRICELITREOFFUEL = 0.5;
 
     //Fields of Car class.
     private double averageSpeed;
@@ -20,9 +25,9 @@ public class Car extends Vehicle {
      * Constructor of class. Appoints values to fields.
      */
     public Car() {
-        averageSpeed = 80;
-        fuelConsumption = 7;
-        priceLitreOfFuel = 0.5;
+        averageSpeed = AVERAGESPEED;
+        fuelConsumption = FUELCONSUMPTION;
+        priceLitreOfFuel = PRICELITREOFFUEL;
     }
 
     /**
@@ -35,7 +40,7 @@ public class Car extends Vehicle {
         double time = 0;
         Distance distanceClass = new Distance();
         for (int i = 1; i < checkPoints.size() - 1; i++) {
-            time += (distanceClass.distanceBetweenCheckpoint(checkPoints.get(i - 1), checkPoints.get(i)))/averageSpeed;
+            time += (distanceClass.distanceBetweenCheckpoint(checkPoints.get(i - 1), checkPoints.get(i))) / averageSpeed;
         }
         return Math.rint(1000.0 * time) / 1000.0;
     }

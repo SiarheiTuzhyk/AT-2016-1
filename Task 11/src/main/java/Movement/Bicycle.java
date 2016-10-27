@@ -6,10 +6,14 @@ import java.util.ArrayList;
  * Class of bicycle. Implements Move interface.
  *
  * @author Siarhei Tuzhyk
- * @version 1.1
- * @since 26.10.2016
+ * @version 1.2
+ * @since 27.10.2016
  */
 public class Bicycle implements Move {
+
+    //Constant values
+    private final double AVERAGESPEED = 5.5;
+    private final double SPENDPRICE = 0;
 
     //Fields of Bicycle class.
     private double averageSpeed;
@@ -19,8 +23,8 @@ public class Bicycle implements Move {
      * Constructor of class. Appoints values to fields.
      */
     public Bicycle() {
-        averageSpeed = 20;
-        price = 0;
+        averageSpeed = AVERAGESPEED;
+        price = SPENDPRICE;
     }
 
     /**

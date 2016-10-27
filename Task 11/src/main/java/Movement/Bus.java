@@ -6,10 +6,16 @@ import java.util.ArrayList;
  * Class of bus. Extends Vehicle abstract class, which include Move interface.
  *
  * @author Siarhei Tuzhyk
- * @version 1.1
- * @since 26.10.2016
+ * @version 1.2
+ * @since 27.10.2016
  */
 public class Bus extends Vehicle {
+
+    //Constant values
+    private final double AVERAGESPEED = 80;
+    private final double FUELCONSUMPTION = 0;
+    private final double PRICELITREOFFUEL = 0.5;
+    private final int PASSANGERS = 40;
 
     //Fields of Bus class.
     private double averageSpeed;
@@ -21,10 +27,10 @@ public class Bus extends Vehicle {
      * Constructor of class. Appoints values to fields.
      */
     public Bus() {
-        averageSpeed = 40;
-        fuelConsumption = 20;
-        priceLitreOfFuel = 0.5;
-        passengers = 40;
+        averageSpeed = AVERAGESPEED;
+        fuelConsumption = FUELCONSUMPTION;
+        priceLitreOfFuel = PRICELITREOFFUEL;
+        passengers = PASSANGERS;
     }
 
     /**
