@@ -1,7 +1,5 @@
 package Movement;
 
-import java.util.ArrayList;
-
 /**
  * Abstract class of vehicle transport. Class implements Move interface.
  *
@@ -18,17 +16,17 @@ public abstract class Vehicle implements Move {
     /**
      * Method for getting spend time for passed distance.
      *
-     * @param checkPoints arraylist with checkpoints.
+     * @param route arraylist with checkpoints.
      * @return time for passed distance.
      */
-    public abstract double howMuchTime(ArrayList<CheckPoint> checkPoints);
+    public abstract double howMuchTime(Route route);
 
     /**
      * Method for getting cost for passed distance.
      *
-     * @param checkPoints arraylist with checkpoints.
+     * @param route arraylist with checkpoints.
      * @return cost for passed distance.
      */
-    public abstract double howMuchPrice(ArrayList<CheckPoint> checkPoints);
+    public abstract double howMuchPrice(Route route);
 
 }

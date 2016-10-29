@@ -1,14 +1,12 @@
 package Movement;
-
 /**
- * Class of Checkpoint. Contain two fields: сoordinates of checkpoint.
+ * Class of Checkpoint. Contain two fields: coordinates of checkpoint.
  *
  * @author Siarhei Tuzhyk
  * @version 1.0
  * @since 26.10.2016
  */
 public class CheckPoint {
-
     //Fields of CheckPoint class
     private double firstCoordinate;
     private double secondCoordinate;

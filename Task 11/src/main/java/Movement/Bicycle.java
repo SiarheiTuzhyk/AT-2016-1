@@ -1,18 +1,14 @@
 package Movement;
-
-import java.util.ArrayList;
-
 /**
  * Class of bicycle. Implements Move interface.
  *
  * @author Siarhei Tuzhyk
- * @version 1.2
- * @since 27.10.2016
+ * @version 1.3
+ * @since 29.10.2016
  */
 public class Bicycle implements Move {
-
     //Constant values
-    private final double AVERAGESPEED = 5.5;
+    private final double AVERAGESPEED = 17;
     private final double SPENDPRICE = 0;
 
     //Fields of Bicycle class.
@@ -30,14 +26,15 @@ public class Bicycle implements Move {
     /**
      * Implements method of interface. Method for getting spend time for passed distance.
      *
-     * @param checkPoints arraylist with checkpoints.
+     * @param route arraylist with checkpoints.
      * @return time for passed distance.
      */
-    public double howMuchTime(ArrayList<CheckPoint> checkPoints) {
+    public double howMuchTime(Route route) {
         double time = 0;
         Distance distanceClass = new Distance();
-        for (int i = 1; i < checkPoints.size() - 1; i++) {
-            time += (distanceClass.distanceBetweenCheckpoint(checkPoints.get(i - 1), checkPoints.get(i)))/averageSpeed;
+        for (int i = 1; i < route.getSizeRoute(); i++) {
+            time += (distanceClass.distanceBetweenCheckpoint(route.getCheckPointByIndex(i - 1),
+                    route.getCheckPointByIndex(i))) / averageSpeed;
         }
         return Math.rint(1000.0 * time) / 1000.0;
     }
@@ -45,10 +42,10 @@ public class Bicycle implements Move {
     /**
      * Implements method of interface. Method for getting cost for passed distance.
      *
-     * @param checkPoints arraylist with checkpoints.
+     * @param route arraylist with checkpoints.
      * @return cost for passed distance.
      */
-    public double howMuchPrice(ArrayList<CheckPoint> checkPoints) {
+    public double howMuchPrice(Route route) {
         return price;
     }
 }
