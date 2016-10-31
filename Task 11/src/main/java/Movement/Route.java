@@ -1,13 +1,11 @@
 package Movement;
-
 import java.util.ArrayList;
-
 /**
  * Class of route, which contain arraylist with checkpoints and validate all route.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
- * @since 29.10.2016
+ * @version 1.1
+ * @since 30.10.2016
  */
 public class Route {
     // Field of class.
@@ -57,6 +55,9 @@ public class Route {
      */
     public void addRoute(Route route, ArrayList<CheckPoint> checkPoints) throws Exception {
         for (CheckPoint checkpoint : checkPoints) {
+            if(checkpoint == null){
+                throw new Exception("Added to route null element!");
+            }
             route.addNewCheckPoint(checkpoint);
         }
         validateRoute(route);

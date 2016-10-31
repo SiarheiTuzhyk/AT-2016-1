@@ -34,20 +34,18 @@ public class DistanceTest {
         assertEquals(50, distance.distanceBetweenCheckpoint(a, b), 0.001);
     }
 
-    @Test
-    public void positiveGetDistanceWithPositiveInfinitiveTest() throws Exception {
+    @Test(expected = Exception.class)
+    public void negativeGetDistanceWithPositiveInfinitiveTest() throws Exception {
         checkPoints.add(new CheckPoint(0, 0));
         checkPoints.add(new CheckPoint(0, Double.NEGATIVE_INFINITY));
         route.addRoute(route, checkPoints);
-        assertEquals(Double.POSITIVE_INFINITY, distance.getDistance(route), 0.000001);
     }
 
-    @Test
-    public void positiveGetDistanceWithNaNTest() throws Exception {
+    @Test(expected = Exception.class)
+    public void negativeGetDistanceWithNaNTest() throws Exception {
         checkPoints.add(new CheckPoint(0, 0));
         checkPoints.add(new CheckPoint(0, Double.NaN));
         route.addRoute(route, checkPoints);
-        assertEquals(Double.NaN, distance.getDistance(route), 0.000001);
     }
 
     @Test(expected = Exception.class)
