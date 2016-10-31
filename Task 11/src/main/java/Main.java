@@ -6,7 +6,6 @@ import Movement.*;
  * @version 1.2
  * @since 29.10.2016
  */
-
 public class Main {
     // Path to file with checkPoints.
     private static final String PATHTOFILE = "E:\\Coordinates.txt";

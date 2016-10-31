@@ -17,7 +17,7 @@ public class RouteTest {
     }
 
     @Test
-    public void checkSizeOfRoute() throws Exception {
+    public void positiveCheckSizeOfRoute() throws Exception {
         checkPoints.add(new CheckPoint(0, 0));
         checkPoints.add(new CheckPoint(1, 1));
         route.addRoute(route, checkPoints);
@@ -25,7 +25,7 @@ public class RouteTest {
     }
 
     @Test
-    public void checkGetCheckPointByIndex() throws Exception {
+    public void positiveCheckGetCheckPointByIndex() throws Exception {
         checkPoints.add(new CheckPoint(0, 0));
         checkPoints.add(new CheckPoint(1, 1));
         route.addRoute(route, checkPoints);
@@ -34,22 +34,30 @@ public class RouteTest {
 
 
     @Test(expected = Exception.class)
-    public void emptyRouteTest() throws Exception {
+    public void negativeEmptyRouteTest() throws Exception {
         route.addRoute(route, checkPoints);
     }
 
     @Test(expected = Exception.class)
-    public void onlyOneCheckPointTest() throws Exception {
+    public void negativeOnlyOneCheckPointTest() throws Exception {
         checkPoints.add(new CheckPoint(1, 1));
         route.addRoute(route, checkPoints);
     }
 
     @Test(expected = Exception.class)
-    public void firstAndLastCheckPointsEqualsTest() throws Exception {
+    public void negativeFirstAndLastCheckPointsEqualsTest() throws Exception {
         checkPoints.add(new CheckPoint(1, 1));
         checkPoints.add(new CheckPoint(1, 50));
         checkPoints.add(new CheckPoint(50, 50));
         checkPoints.add(new CheckPoint(1, 1));
+        route.addRoute(route, checkPoints);
+    }
+
+    @Test(expected = Exception.class)
+    public void negativeRouteWithNullCheckPointTest() throws Exception {
+        checkPoints.add(new CheckPoint(1, 1));
+        checkPoints.add(null);
+        checkPoints.add(new CheckPoint(50, 50));
         route.addRoute(route, checkPoints);
     }
 }
