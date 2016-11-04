@@ -66,6 +66,7 @@ public class TriangleTest {
         return new Object[][]{
                 {"equilateral", 1, 1, 1}, {"equilateral", 0.001, 0.001, 0.001},
                 {"equilateral", Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
+                {"equilateral",Double.MAX_VALUE,Double.MAX_VALUE,Double.MAX_VALUE},
                 {"isosceles", 2, 2, 3}, {"isosceles", 4.0001, 6.00001, 4.0001},
                 {"ordinary", 4.0001, 6.00001, 4.0}, {"ordinary", 3, 4, 6},
                 {"ordinary", 3, 4.000001, 4.00001}
