@@ -22,14 +22,14 @@ public class TriangleTest {
                 {"exist", 1, 1, Double.MIN_VALUE}, {"exist", 1, Double.MIN_VALUE, 1},
                 {"exist", Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
                 {"exist", Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE},
-                {"exist", Double.MAX_VALUE, Double.MAX_VALUE, Double.MIN_VALUE},
+                {"exist", Double.MAX_VALUE, Double.MAX_VALUE, Double.MIN_VALUE}
         };
     }
 
     @DataProvider(name = "negative test checkTriangle with wrong values")
-    public Object[][] forPositiveTestWrongValuesCheckTriangle() {
+    public Object[][] forNegativeTestWrongValuesCheckTriangle() {
         return new Object[][]{
-                {-1, -1, -1}, {-0.001, -0.001, -0.001},
+                {-1, -1, -1}, {-0.001, -0.001, -0.001}, {1E100,1E100,99E100},
                 {-4.0001, -6.00001, -4.00001}, {-3, -4.000001, -5},
                 {0, 0, 0}, {-1, -1, -1}, {1, 1, 0}, {1, 0, 1}, {0, 1, 1},
                 {1, 0, 0}, {0, 1, 0}, {0, 0, 1}, {-1, 0, 0}, {0, -1, 0}, {0, 0, -1},
@@ -67,9 +67,14 @@ public class TriangleTest {
                 {"equilateral", 1, 1, 1}, {"equilateral", 0.001, 0.001, 0.001},
                 {"equilateral", Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
                 {"equilateral",Double.MAX_VALUE,Double.MAX_VALUE,Double.MAX_VALUE},
-                {"isosceles", 2, 2, 3}, {"isosceles", 4.0001, 6.00001, 4.0001},
-                {"ordinary", 4.0001, 6.00001, 4.0}, {"ordinary", 3, 4, 6},
-                {"ordinary", 3, 4.000001, 4.00001}
+                {"isosceles", 2, 2, 3},{"isosceles", 2, 3, 2},{"isosceles", 3, 2, 2},
+                {"isosceles", 4.0001, 6.00001, 4.0001},{"isosceles", 4.0001, 4.0001, 6.00001},
+                {"isosceles",Double.MAX_VALUE,Double.MAX_VALUE,100},
+                {"isosceles",Double.MAX_VALUE,100,Double.MAX_VALUE},
+                {"isosceles",100,Double.MAX_VALUE,Double.MAX_VALUE},
+                {"isosceles", 6.00001, 4.0001, 6.00001},
+                {"ordinary", 4.0001, 6.00001, 4.0}, {"ordinary", 4.0, 6.00001, 4.0001},
+                {"ordinary", 3, 4, 6}, {"ordinary", 3, 4.000001, 4.00001}
         };
     }
 

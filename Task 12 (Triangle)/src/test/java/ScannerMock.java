@@ -3,14 +3,13 @@ package test.java;
 import main.java.ScannerAdapter;
 
 public class ScannerMock extends ScannerAdapter {
-    double entered;
-    ScannerAdapter scanner;
+    String entered;
 
-    public ScannerMock(double entered) {
+    public ScannerMock(String entered) {
         this.entered = entered;
     }
 
-    public double nextDouble() {
+    public String next() {
         return entered;
     }
 }

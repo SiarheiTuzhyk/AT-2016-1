@@ -2,7 +2,6 @@ package main.java;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 /**
  * Main class of program. Entrance point to the program.
  *
@@ -11,7 +10,7 @@ import java.util.Scanner;
  * @since 04-11-2016
  */
 public class Main {
-    // sides of triangle.
+    // Sides of triangle.
     private static final int NUMBEROFSIDES = 3;
 
     /**

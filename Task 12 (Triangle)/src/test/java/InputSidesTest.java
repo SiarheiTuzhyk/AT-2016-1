@@ -1,5 +1,4 @@
 package test.java;
-import main.java.ScannerAdapter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.math.BigDecimal;
@@ -11,38 +10,54 @@ import static org.testng.Assert.*;
  */
 public class InputSidesTest {
 
+    ArrayList<BigDecimal> sides;
+    ArrayList<BigDecimal> sidesExpected;
+
     @DataProvider(name = "positive inputSides")
-    public Object[][] positiveInputSides(){
+    public Object[][] positiveInputSides() {
         return new Object[][]{
-                {1,1,1},{0,0,0},{-1,-1,-1},{0.0001,0.0001,0.0001},
-                {Double.MIN_VALUE,Double.MIN_VALUE,Double.MIN_VALUE},
-                {Double.MAX_VALUE,Double.MAX_VALUE,Double.MAX_VALUE}
+                {"1", "1", "1"}, {"0", "0", "0"}, {"-1", "-1", "-1"},
+                {"0.0001", "0.0001", "0.0001"}, {"3", "4.000001", "5"},
+                {"1E100", "1E100", "99E100"},{"4.0", "4.0", "2.0"},
+                {"+5","1","1"},{"1","+5","1"},{"1","1","+5"},
+                {"1.","1","1"},{"1","1.","1"},{"1","1","1."}
+
         };
     }
 
     @DataProvider(name = "negative inputSides")
-    public Object[][] negativeInputSides(){
+    public Object[][] negativeInputSides() {
         return new Object[][]{
-                {1f,1,1},{0,null,0},{-1,-1d,-1},{Double.POSITIVE_INFINITY,1,1},
-                {Double.NEGATIVE_INFINITY,1,1},{Double.NaN,1,1}
+                {"1f", "1", "1"}, {"0", "null", "0"}, {"-1", "-1d", "-1"},
+                {"0,9","1","1"},{"1","0,9","1"},{"1","1","0,9"},
+                {"1/2","1","1"},{"1","1/2","1"},{"1","1","1/2"},
+                {"1\2","\1","1"},{"1","1\2","1"},{"1","1","1\2"},
+                {"o","0","1"},{"0","o","1"},{"0","1","o"},
         };
     }
 
     @Test(dataProvider = "positive inputSides")
-    public void positiveTestInputSides(double a, double b, double c){
+    public void positiveTestInputSides(String a, String b, String c) {
         ArrayList<BigDecimal> sides = new ArrayList<>();
-        sides.add(new BigDecimal(a));
-        sides.add(new BigDecimal(b));
-        sides.add(new BigDecimal(c));
-        fail();
-        // TODO: 04.11.2016 positive tests for inputSides method.
+        sides.add(new BigDecimal(new ScannerMock(a).next()));
+        sides.add(new BigDecimal(new ScannerMock(b).next()));
+        sides.add(new BigDecimal(new ScannerMock(c).next()));
+        ArrayList<BigDecimal> sidesExpected = new ArrayList<>();
+        sidesExpected.add(new BigDecimal(a));
+        sidesExpected.add(new BigDecimal(b));
+        sidesExpected.add(new BigDecimal(c));
+        assertEquals(sides, sidesExpected);
     }
 
-    @Test(dataProvider = "negative inputSides",expectedExceptions = Exception.class)
-    public void negativeTestInputSides(double x) throws Exception {
-        ScannerAdapter in = new ScannerMock(x);
-        assertEquals(in.nextDouble(),x);
-        fail();
-        // TODO: 04.11.2016 negative tests for inputSides method.
+    @Test(dataProvider = "negative inputSides", expectedExceptions = Exception.class)
+    public void negativeTestInputSides(String a, String b, String c) throws Exception {
+        sides = new ArrayList<>();
+        sides.add(new BigDecimal(new ScannerMock(a).next()));
+        sides.add(new BigDecimal(new ScannerMock(b).next()));
+        sides.add(new BigDecimal(new ScannerMock(c).next()));
+        sidesExpected = new ArrayList<>();
+        sidesExpected.add(new BigDecimal(a));
+        sidesExpected.add(new BigDecimal(b));
+        sidesExpected.add(new BigDecimal(c));
     }
 }

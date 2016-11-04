@@ -5,10 +5,15 @@ import java.util.*;
  * Class of triangle.
  *
  * @author Siarhei Tuzhyk
- * @version 1.6
+ * @version 1.7
  * @since 04-11-2016
  */
 public class Triangle {
+    private final String MESSAGEABOUTEXIST = "exist";
+    private final String EQUILATERAL = "equilateral";
+    private final String ISOSCELES = "isosceles";
+    private final String ORDINARY = "ordinary";
+
     private BigDecimal firstSide;
     private BigDecimal secondSide;
     private BigDecimal thirdSide;
@@ -27,13 +32,11 @@ public class Triangle {
         firstSide = sides.get(0);
         secondSide = sides.get(1);
         thirdSide = sides.get(2);
-        messageAboutExist = "exist";
+        messageAboutExist = MESSAGEABOUTEXIST;
         triangleType = "";
     }
 
     /**
-     * Trivial method.
-     *
      * @return type of triangle.
      */
     public String getTriangleType() {
@@ -41,8 +44,6 @@ public class Triangle {
     }
 
     /**
-     * Trivial method.
-     *
      * @return message about existing of triangle.
      */
     public String getMessage() {
@@ -50,8 +51,6 @@ public class Triangle {
     }
 
     /**
-     * Trivial method.
-     *
      * @return first side of triangle.
      */
     public BigDecimal getFirstSide() {
@@ -59,8 +58,6 @@ public class Triangle {
     }
 
     /**
-     * Trivial method.
-     *
      * @return second side of triangle.
      */
     public BigDecimal getSecondSide() {
@@ -68,8 +65,6 @@ public class Triangle {
     }
 
     /**
-     * Trivial method.
-     *
      * @return third side of triangle.
      */
     public BigDecimal getThirdSide() {
@@ -131,11 +126,11 @@ public class Triangle {
         if ((sides.get(0)).compareTo(sides.get(1)) == 0    // (a = b)
                 && (sides.get(1)).compareTo(sides.get(2)) == 0    // (b = c)
                 && (sides.get(0)).compareTo(sides.get(2)) == 0) {    // (a == c)
-            triangleType = "equilateral";
+            triangleType = EQUILATERAL;
         } else if (isItAIsoscelesTriangle(sides)) {
-            triangleType = "isosceles";
+            triangleType = ISOSCELES;
         } else {
-            triangleType = "ordinary";
+            triangleType = ORDINARY;
         }
         return triangleType;
     }

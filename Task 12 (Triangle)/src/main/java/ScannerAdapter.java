@@ -3,27 +3,32 @@ package main.java;
 import java.util.Scanner;
 
 /**
- * Copy-class of Scanner.
+ * Wrapper of Scanner.
  *
  * @author Siarhei Tuzhyk
  * @version 1.0
  * @since 04.11.2016
  */
-// in test - ScannerMock extend ScannerAdapter.
 public class ScannerAdapter {
     Scanner in;
 
+    /**
+     * Constructor of class.
+     *
+     * @param in text scanner.
+     */
     public ScannerAdapter(Scanner in) {
         this.in = in;
     }
-    public ScannerAdapter(){
 
-    }
+    /**
+     * Default constructor.
+     */
+    public ScannerAdapter() {}
 
-    public double nextDouble() {
-        return in.nextDouble();
-    }
-
+    /**
+     * @return entered string.
+     */
     public String next() {
         return in.next();
     }
