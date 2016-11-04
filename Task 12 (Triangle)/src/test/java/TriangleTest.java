@@ -1,14 +1,10 @@
 package test.java;
-
 import main.java.Triangle;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
 import static org.testng.Assert.*;
-
 /**
  * Test class "Triangle."
  */
@@ -40,33 +36,27 @@ public class TriangleTest {
                 {0.0001, 0.0001, 0}, {0.0001, 0.0, 0.0001}, {0.0, 0.0001, 0.0001},
                 {-5, 4, 4}, {4, -5, 5}, {4, 5, -5}, {1, 1, 2}, {7, 4, 3},
                 {2, 6, 2}, {1, 1, 10}, {1, 1, -1}, {1, -1, 1}, {-1, 1, 1},
-
                 {1, 0, Double.MIN_VALUE}, {1, Double.MIN_VALUE, 0}, {Double.MIN_VALUE, 1, 0},
                 {1, -1, Double.MIN_VALUE}, {1, Double.MIN_VALUE, -1}, {Double.MIN_VALUE, 1, -1},
                 {1, 1, -Double.MIN_VALUE}, {1, -Double.MIN_VALUE, 1}, {-Double.MIN_VALUE, 1, 1},
                 {1, -1, -Double.MIN_VALUE}, {1, -Double.MIN_VALUE, -1}, {-Double.MIN_VALUE, 1, -1},
-
                 {Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
                 {Double.MAX_VALUE, Double.MAX_VALUE, -Double.MIN_VALUE},
                 {Double.MAX_VALUE, -Double.MIN_VALUE, -Double.MIN_VALUE},
                 {-Double.MAX_VALUE, -Double.MAX_VALUE, Double.MIN_VALUE},
                 {-Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
-
                 {Double.POSITIVE_INFINITY, 1, 1}, {1, Double.POSITIVE_INFINITY, 1},
                 {1, 1, Double.POSITIVE_INFINITY}, {Double.NEGATIVE_INFINITY, 1, 1},
                 {1, Double.NEGATIVE_INFINITY, 1}, {1, 1, Double.NEGATIVE_INFINITY},
                 {Double.NaN, 1, 1}, {1, Double.NaN, 1}, {1, 1, Double.NaN},
-
                 {Double.POSITIVE_INFINITY, -1, -1}, {-1, Double.POSITIVE_INFINITY, -1},
                 {-1, -1, Double.POSITIVE_INFINITY}, {Double.NEGATIVE_INFINITY, -1, -1},
                 {-1, Double.NEGATIVE_INFINITY, -1}, {-1, -1, Double.NEGATIVE_INFINITY},
                 {Double.NaN, 1, 1}, {1, Double.NaN, 1}, {1, 1, Double.NaN},
-
                 {1, 0, Double.POSITIVE_INFINITY}, {1, Double.POSITIVE_INFINITY, 0},
                 {Double.POSITIVE_INFINITY, 1, 0}, {1, 0, Double.NEGATIVE_INFINITY},
                 {1, Double.NEGATIVE_INFINITY, 0}, {Double.NEGATIVE_INFINITY, 1, 0},
                 {1, 0, Double.NaN}, {1, Double.NaN, 0}, {Double.NaN, 1, 0},
-
                 {1, 1, null}, {1, null, 1}, {null, 1, 1}, {1, null, null}, {null, 1, null}, {null, null, 1}
         };
     }
@@ -110,4 +100,5 @@ public class TriangleTest {
         triangle = new Triangle(sides);
         assertTrue(triangle.getTypeOfTriangle().equals(expected));
     }
+
 }

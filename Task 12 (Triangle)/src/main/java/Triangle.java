@@ -5,8 +5,8 @@ import java.util.*;
  * Class of triangle.
  *
  * @author Siarhei Tuzhyk
- * @version 1.5
- * @since 03-11-2016
+ * @version 1.6
+ * @since 04-11-2016
  */
 public class Triangle {
     private BigDecimal firstSide;
