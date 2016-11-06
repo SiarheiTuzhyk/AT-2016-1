@@ -18,11 +18,7 @@ public class TriangleTest {
                 {"exist", 1.0, 1.0, 1.0}, {"exist", 4, 4, 2},
                 {"exist", 3, 4, 5}, {"exist", 3, 4, 6.9}, {"exist", 0.0001, 0.0001, 0.0001},
                 {"exist", 1, 1, 0.0001}, {"exist", 4.0001, 6.00001, 4.00001},
-                {"exist", 3, 4.000001, 5}, {"exist", Double.MIN_VALUE, 1, 1},
-                {"exist", 1, 1, Double.MIN_VALUE}, {"exist", 1, Double.MIN_VALUE, 1},
-                {"exist", Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
-                {"exist", Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE},
-                {"exist", Double.MAX_VALUE, Double.MAX_VALUE, Double.MIN_VALUE}
+                {"exist", 3, 4.000001, 5}
         };
     }
 
@@ -36,15 +32,6 @@ public class TriangleTest {
                 {0.0001, 0.0001, 0}, {0.0001, 0.0, 0.0001}, {0.0, 0.0001, 0.0001},
                 {-5, 4, 4}, {4, -5, 5}, {4, 5, -5}, {1, 1, 2}, {7, 4, 3},
                 {2, 6, 2}, {1, 1, 10}, {1, 1, -1}, {1, -1, 1}, {-1, 1, 1},
-                {1, 0, Double.MIN_VALUE}, {1, Double.MIN_VALUE, 0}, {Double.MIN_VALUE, 1, 0},
-                {1, -1, Double.MIN_VALUE}, {1, Double.MIN_VALUE, -1}, {Double.MIN_VALUE, 1, -1},
-                {1, 1, -Double.MIN_VALUE}, {1, -Double.MIN_VALUE, 1}, {-Double.MIN_VALUE, 1, 1},
-                {1, -1, -Double.MIN_VALUE}, {1, -Double.MIN_VALUE, -1}, {-Double.MIN_VALUE, 1, -1},
-                {Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
-                {Double.MAX_VALUE, Double.MAX_VALUE, -Double.MIN_VALUE},
-                {Double.MAX_VALUE, -Double.MIN_VALUE, -Double.MIN_VALUE},
-                {-Double.MAX_VALUE, -Double.MAX_VALUE, Double.MIN_VALUE},
-                {-Double.MAX_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
                 {Double.POSITIVE_INFINITY, 1, 1}, {1, Double.POSITIVE_INFINITY, 1},
                 {1, 1, Double.POSITIVE_INFINITY}, {Double.NEGATIVE_INFINITY, 1, 1},
                 {1, Double.NEGATIVE_INFINITY, 1}, {1, 1, Double.NEGATIVE_INFINITY},
@@ -65,13 +52,8 @@ public class TriangleTest {
     public Object[][] positiveRightTypeOfTriangle() {
         return new Object[][]{
                 {"equilateral", 1, 1, 1}, {"equilateral", 0.001, 0.001, 0.001},
-                {"equilateral", Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE},
-                {"equilateral",Double.MAX_VALUE,Double.MAX_VALUE,Double.MAX_VALUE},
                 {"isosceles", 2, 2, 3},{"isosceles", 2, 3, 2},{"isosceles", 3, 2, 2},
                 {"isosceles", 4.0001, 6.00001, 4.0001},{"isosceles", 4.0001, 4.0001, 6.00001},
-                {"isosceles",Double.MAX_VALUE,Double.MAX_VALUE,100},
-                {"isosceles",Double.MAX_VALUE,100,Double.MAX_VALUE},
-                {"isosceles",100,Double.MAX_VALUE,Double.MAX_VALUE},
                 {"isosceles", 6.00001, 4.0001, 6.00001},
                 {"ordinary", 4.0001, 6.00001, 4.0}, {"ordinary", 4.0, 6.00001, 4.0001},
                 {"ordinary", 3, 4, 6}, {"ordinary", 3, 4.000001, 4.00001}
