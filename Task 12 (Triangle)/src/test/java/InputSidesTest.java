@@ -1,6 +1,13 @@
 package test.java;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import static org.testng.Assert.*;
@@ -9,31 +16,50 @@ import static org.testng.Assert.*;
  * Test class "inputSides".
  */
 public class InputSidesTest {
-
+    private final String DATA_PATH = "E:\\TAT-homeworks\\Task 12 (Triangle)\\src\\test\\java\\data_provider_inputSides.xml";
+    private final String POSITIVE = "positive";
+    private final String NEGATIVE = "negative";
+    private final String FIRSTSIDE = "firstSide";
+    private final String SECONDSIDE = "secondSide";
+    private final String THIRDSIDE = "thirdSide";
     ArrayList<BigDecimal> sides;
     ArrayList<BigDecimal> sidesExpected;
-
     @DataProvider(name = "positive inputSides")
-    public Object[][] positiveInputSides() {
-        return new Object[][]{
-                {"1", "1", "1"}, {"0", "0", "0"}, {"-1", "-1", "-1"},
-                {"0.0001", "0.0001", "0.0001"}, {"3", "4.000001", "5"},
-                {"1E100", "1E100", "99E100"},{"4.0", "4.0", "2.0"},
-                {"+5","1","1"},{"1","+5","1"},{"1","1","+5"},
-                {"1.","1","1"},{"1","1.","1"},{"1","1","1."}
-
-        };
+    public Object[][] positiveInputSides() throws Exception {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        File testDataFile = new File(DATA_PATH);
+        Document document = documentBuilder.parse(testDataFile);
+        NodeList nodes = document.getElementsByTagName(POSITIVE);
+        Object[][] result = new Object[nodes.getLength()][];
+        for (int i = 0; i < nodes.getLength(); i++) {
+            NamedNodeMap attributes = nodes.item(i).getAttributes();
+            result[i] = new Object[]{
+                    attributes.getNamedItem(FIRSTSIDE).getNodeValue(),
+                    attributes.getNamedItem(SECONDSIDE).getNodeValue(),
+                    attributes.getNamedItem(THIRDSIDE).getNodeValue()
+            };
+        }
+        return result;
     }
 
     @DataProvider(name = "negative inputSides")
-    public Object[][] negativeInputSides() {
-        return new Object[][]{
-                {"1f", "1", "1"}, {"0", "null", "0"}, {"-1", "-1d", "-1"},
-                {"0,9","1","1"},{"1","0,9","1"},{"1","1","0,9"},
-                {"1/2","1","1"},{"1","1/2","1"},{"1","1","1/2"},
-                {"1\2","\1","1"},{"1","1\2","1"},{"1","1","1\2"},
-                {"o","0","1"},{"0","o","1"},{"0","1","o"},
-        };
+    public Object[][] negativeInputSides() throws Exception {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        File testDataFile = new File(DATA_PATH);
+        Document document = documentBuilder.parse(testDataFile);
+        NodeList nodes = document.getElementsByTagName(NEGATIVE);
+        Object[][] result = new Object[nodes.getLength()][];
+        for (int i = 0; i < nodes.getLength(); i++) {
+            NamedNodeMap attributes = nodes.item(i).getAttributes();
+            result[i] = new Object[]{
+                    attributes.getNamedItem(FIRSTSIDE).getNodeValue(),
+                    attributes.getNamedItem(SECONDSIDE).getNodeValue(),
+                    attributes.getNamedItem(THIRDSIDE).getNodeValue()
+            };
+        }
+        return result;
     }
 
     @Test(dataProvider = "positive inputSides")

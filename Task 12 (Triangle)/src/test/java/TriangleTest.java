@@ -2,6 +2,13 @@ package test.java;
 import main.java.Triangle;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import static org.testng.Assert.*;
@@ -9,55 +16,76 @@ import static org.testng.Assert.*;
  * Test class "Triangle."
  */
 public class TriangleTest {
-
+    private final String DATA_PATH = "E:\\TAT-homeworks\\Task 12 (Triangle)\\src\\test\\java\\data_provider_triangle.xml";
+    private final String CONSTRUCTORPOSITIVE = "constructorPositive";
+    private final String CONSTRUCTORNEGATIVE = "constructorNegative";
+    private final String TRIANGLETYPE = "triangleType";
+    private final String EXPECTED = "expected";
+    private final String FIRSTSIDE = "firstSide";
+    private final String SECONDSIDE = "secondSide";
+    private final String THIRDSIDE = "thirdSide";
     Triangle triangle;
 
     @DataProvider(name = "positive test constructor of class")
-    public Object[][] positiveRightValuesConstructor() {
-        return new Object[][]{
-                {"exist", 1.0, 1.0, 1.0}, {"exist", 4, 4, 2},
-                {"exist", 3, 4, 5}, {"exist", 3, 4, 6.9}, {"exist", 0.0001, 0.0001, 0.0001},
-                {"exist", 1, 1, 0.0001}, {"exist", 4.0001, 6.00001, 4.00001},
-                {"exist", 3, 4.000001, 5}
-        };
+    public Object[][] positiveRightValuesConstructor() throws Exception {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        File testDataFile = new File(DATA_PATH);
+        Document document = documentBuilder.parse(testDataFile);
+        NodeList nodes = document.getElementsByTagName(CONSTRUCTORPOSITIVE);
+        Object[][] result = new Object[nodes.getLength()][];
+        for (int i = 0; i < nodes.getLength(); i++) {
+            NamedNodeMap attributes = nodes.item(i).getAttributes();
+            result[i] = new Object[]{
+                    attributes.getNamedItem(EXPECTED).getNodeValue(),
+                    Double.parseDouble(attributes.getNamedItem(FIRSTSIDE).getNodeValue()),
+                    Double.parseDouble(attributes.getNamedItem(SECONDSIDE).getNodeValue()),
+                    Double.parseDouble(attributes.getNamedItem(THIRDSIDE).getNodeValue())
+            };
+        }
+        return result;
     }
 
     @DataProvider(name = "negative test checkTriangle with wrong values")
-    public Object[][] forNegativeTestWrongValuesCheckTriangle() {
-        return new Object[][]{
-                {-1, -1, -1}, {-0.001, -0.001, -0.001}, {1E100,1E100,99E100},
-                {-4.0001, -6.00001, -4.00001}, {-3, -4.000001, -5},
-                {0, 0, 0}, {-1, -1, -1}, {1, 1, 0}, {1, 0, 1}, {0, 1, 1},
-                {1, 0, 0}, {0, 1, 0}, {0, 0, 1}, {-1, 0, 0}, {0, -1, 0}, {0, 0, -1},
-                {0.0001, 0.0001, 0}, {0.0001, 0.0, 0.0001}, {0.0, 0.0001, 0.0001},
-                {-5, 4, 4}, {4, -5, 5}, {4, 5, -5}, {1, 1, 2}, {7, 4, 3},
-                {2, 6, 2}, {1, 1, 10}, {1, 1, -1}, {1, -1, 1}, {-1, 1, 1},
-                {Double.POSITIVE_INFINITY, 1, 1}, {1, Double.POSITIVE_INFINITY, 1},
-                {1, 1, Double.POSITIVE_INFINITY}, {Double.NEGATIVE_INFINITY, 1, 1},
-                {1, Double.NEGATIVE_INFINITY, 1}, {1, 1, Double.NEGATIVE_INFINITY},
-                {Double.NaN, 1, 1}, {1, Double.NaN, 1}, {1, 1, Double.NaN},
-                {Double.POSITIVE_INFINITY, -1, -1}, {-1, Double.POSITIVE_INFINITY, -1},
-                {-1, -1, Double.POSITIVE_INFINITY}, {Double.NEGATIVE_INFINITY, -1, -1},
-                {-1, Double.NEGATIVE_INFINITY, -1}, {-1, -1, Double.NEGATIVE_INFINITY},
-                {Double.NaN, 1, 1}, {1, Double.NaN, 1}, {1, 1, Double.NaN},
-                {1, 0, Double.POSITIVE_INFINITY}, {1, Double.POSITIVE_INFINITY, 0},
-                {Double.POSITIVE_INFINITY, 1, 0}, {1, 0, Double.NEGATIVE_INFINITY},
-                {1, Double.NEGATIVE_INFINITY, 0}, {Double.NEGATIVE_INFINITY, 1, 0},
-                {1, 0, Double.NaN}, {1, Double.NaN, 0}, {Double.NaN, 1, 0},
-                {1, 1, null}, {1, null, 1}, {null, 1, 1}, {1, null, null}, {null, 1, null}, {null, null, 1}
-        };
+    public Object[][] negativeWrongValuesConstructor() throws Exception {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        File testDataFile = new File(DATA_PATH);
+        Document document = documentBuilder.parse(testDataFile);
+        NodeList nodes = document.getElementsByTagName(CONSTRUCTORNEGATIVE);
+        Object[][] result = new Double[nodes.getLength()][];
+        for (int i = 0; i < nodes.getLength(); i++) {
+            NamedNodeMap attributes = nodes.item(i).getAttributes();
+            result[i] = new Double[]{
+                    attributes.getNamedItem(FIRSTSIDE) == null ? null
+                            :Double.parseDouble(attributes.getNamedItem(FIRSTSIDE).getNodeValue()),
+                    attributes.getNamedItem(SECONDSIDE) == null ? null
+                            :Double.parseDouble(attributes.getNamedItem(SECONDSIDE).getNodeValue()),
+                    attributes.getNamedItem(THIRDSIDE) == null ? null
+                            :Double.parseDouble(attributes.getNamedItem(THIRDSIDE).getNodeValue())
+            };
+        }
+        return result;
     }
 
     @DataProvider(name = "positive test getTypeOfTriangle")
-    public Object[][] positiveRightTypeOfTriangle() {
-        return new Object[][]{
-                {"equilateral", 1, 1, 1}, {"equilateral", 0.001, 0.001, 0.001},
-                {"isosceles", 2, 2, 3},{"isosceles", 2, 3, 2},{"isosceles", 3, 2, 2},
-                {"isosceles", 4.0001, 6.00001, 4.0001},{"isosceles", 4.0001, 4.0001, 6.00001},
-                {"isosceles", 6.00001, 4.0001, 6.00001},
-                {"ordinary", 4.0001, 6.00001, 4.0}, {"ordinary", 4.0, 6.00001, 4.0001},
-                {"ordinary", 3, 4, 6}, {"ordinary", 3, 4.000001, 4.00001}
-        };
+    public Object[][] positiveRightTypeOfTriangle() throws Exception {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        File testDataFile = new File(DATA_PATH);
+        Document document = documentBuilder.parse(testDataFile);
+        NodeList nodes = document.getElementsByTagName(TRIANGLETYPE);
+        Object[][] result = new Object[nodes.getLength()][];
+        for (int i = 0; i < nodes.getLength(); i++) {
+            NamedNodeMap attributes = nodes.item(i).getAttributes();
+            result[i] = new Object[]{
+                    attributes.getNamedItem(EXPECTED).getNodeValue(),
+                    Double.parseDouble(attributes.getNamedItem(FIRSTSIDE).getNodeValue()),
+                    Double.parseDouble(attributes.getNamedItem(SECONDSIDE).getNodeValue()),
+                    Double.parseDouble(attributes.getNamedItem(THIRDSIDE).getNodeValue())
+            };
+        }
+        return result;
     }
 
     @Test(dataProvider = "positive test constructor of class")
@@ -88,5 +116,4 @@ public class TriangleTest {
         triangle = new Triangle(sides);
         assertTrue(triangle.getTypeOfTriangle().equals(expected));
     }
-
 }

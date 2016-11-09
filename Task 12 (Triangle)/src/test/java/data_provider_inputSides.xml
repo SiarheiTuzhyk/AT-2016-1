@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <positive firstSide="1" secondSide="1" thirdSide="1"/>
+    <positive firstSide="0" secondSide="0" thirdSide="0"/>
+    <positive firstSide="0.0001" secondSide="0.0001" thirdSide="0.0001"/>
+    <positive firstSide="-1" secondSide="-1" thirdSide="-1"/>
+    <positive firstSide="3" secondSide="4.000001" thirdSide="5"/>
+    <positive firstSide="1E100" secondSide="1E100" thirdSide="99E100"/>
+    <positive firstSide="1." secondSide="1" thirdSide="1"/>
+    <positive firstSide="1" secondSide="1." thirdSide="1"/>
+    <positive firstSide="1" secondSide="1" thirdSide="1."/>
+    <positive firstSide="+5" secondSide="1" thirdSide="1"/>
+    <positive firstSide="1" secondSide="+5" thirdSide="1"/>
+    <positive firstSide="1" secondSide="1" thirdSide="+5"/>
+    <positive firstSide="4.0" secondSide="4.0" thirdSide="2.0"/>
+
+    <negative firstSide="1f" secondSide="1" thirdSide="1"/>
+    <negative firstSide="0" secondSide="nul" thirdSide="0"/>
+    <negative firstSide="-1" secondSide="-1d" thirdSide="-1"/>
+    <negative firstSide="0,9" secondSide="1" thirdSide="1"/>
+    <negative firstSide="1" secondSide="0,9" thirdSide="1"/>
+    <negative firstSide="1" secondSide="1" thirdSide="0,9"/>
+    <negative firstSide="1/2" secondSide="1" thirdSide="1"/>
+    <negative firstSide="1" secondSide="1/2" thirdSide="1"/>
+    <negative firstSide="1" secondSide="1" thirdSide="1/2"/>
+    <negative firstSide="1" secondSide="\1" thirdSide="1"/>
+    <negative firstSide="\1" secondSide="1" thirdSide="1"/>
+    <negative firstSide="1" secondSide="1" thirdSide="\1"/>
+    <negative firstSide="o" secondSide="0" thirdSide="1"/>
+    <negative firstSide="0" secondSide="o" thirdSide="1"/>
+    <negative firstSide="1" secondSide="0" thirdSide="o"/>
+</data>
