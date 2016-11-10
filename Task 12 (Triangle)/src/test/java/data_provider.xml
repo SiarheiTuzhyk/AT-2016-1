@@ -56,4 +56,34 @@
         <constructorNegative firstSide="1"/>
         <constructorNegative secondSide="1" />
         <constructorNegative thirdSide="1"/>
+
+        <positiveInput firstSide="1" secondSide="1" thirdSide="1"/>
+        <positiveInput firstSide="0" secondSide="0" thirdSide="0"/>
+        <positiveInput firstSide="0.0001" secondSide="0.0001" thirdSide="0.0001"/>
+        <positiveInput firstSide="-1" secondSide="-1" thirdSide="-1"/>
+        <positiveInput firstSide="3" secondSide="4.000001" thirdSide="5"/>
+        <positiveInput firstSide="1E100" secondSide="1E100" thirdSide="99E100"/>
+        <positiveInput firstSide="1." secondSide="1" thirdSide="1"/>
+        <positiveInput firstSide="1" secondSide="1." thirdSide="1"/>
+        <positiveInput firstSide="1" secondSide="1" thirdSide="1."/>
+        <positiveInput firstSide="+5" secondSide="1" thirdSide="1"/>
+        <positiveInput firstSide="1" secondSide="+5" thirdSide="1"/>
+        <positiveInput firstSide="1" secondSide="1" thirdSide="+5"/>
+        <positiveInput firstSide="4.0" secondSide="4.0" thirdSide="2.0"/>
+
+        <negativeInput firstSide="1f" secondSide="1" thirdSide="1"/>
+        <negativeInput firstSide="0" secondSide="nul" thirdSide="0"/>
+        <negativeInput firstSide="-1" secondSide="-1d" thirdSide="-1"/>
+        <negativeInput firstSide="0,9" secondSide="1" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="0,9" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="1" thirdSide="0,9"/>
+        <negativeInput firstSide="1/2" secondSide="1" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="1/2" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="1" thirdSide="1/2"/>
+        <negativeInput firstSide="1" secondSide="\1" thirdSide="1"/>
+        <negativeInput firstSide="\1" secondSide="1" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="1" thirdSide="\1"/>
+        <negativeInput firstSide="o" secondSide="0" thirdSide="1"/>
+        <negativeInput firstSide="0" secondSide="o" thirdSide="1"/>
+        <negativeInput firstSide="1" secondSide="0" thirdSide="o"/>
 </data>
