@@ -7,6 +7,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.math.BigDecimal;
 
 /**
  * Class for read XML file with data for our tests.
@@ -95,9 +96,9 @@ public class ReadXML {
     private Object[] attributesForPositiveTriangle(NamedNodeMap attributes) {
         return new Object[]{
                 attributes.getNamedItem(EXPECTED).getNodeValue(),
-                Double.parseDouble(attributes.getNamedItem(FIRSTSIDE).getNodeValue()),
-                Double.parseDouble(attributes.getNamedItem(SECONDSIDE).getNodeValue()),
-                Double.parseDouble(attributes.getNamedItem(THIRDSIDE).getNodeValue())
+                new BigDecimal(attributes.getNamedItem(FIRSTSIDE).getNodeValue()),
+                new BigDecimal(attributes.getNamedItem(SECONDSIDE).getNodeValue()),
+                new BigDecimal(attributes.getNamedItem(THIRDSIDE).getNodeValue())
         };
     }
 
@@ -108,13 +109,13 @@ public class ReadXML {
      * @return data from certain line.
      */
     private Object[] attributesForNegativeConstructor(NamedNodeMap attributes) {
-        return new Double[]{
+        return new BigDecimal[]{
                 attributes.getNamedItem(FIRSTSIDE) == null ? null
-                        : Double.parseDouble(attributes.getNamedItem(FIRSTSIDE).getNodeValue()),
+                        : new BigDecimal(attributes.getNamedItem(FIRSTSIDE).getNodeValue()),
                 attributes.getNamedItem(SECONDSIDE) == null ? null
-                        : Double.parseDouble(attributes.getNamedItem(SECONDSIDE).getNodeValue()),
+                        : new BigDecimal(attributes.getNamedItem(SECONDSIDE).getNodeValue()),
                 attributes.getNamedItem(THIRDSIDE) == null ? null
-                        : Double.parseDouble(attributes.getNamedItem(THIRDSIDE).getNodeValue())
+                        : new BigDecimal(attributes.getNamedItem(THIRDSIDE).getNodeValue())
         };
     }
 }

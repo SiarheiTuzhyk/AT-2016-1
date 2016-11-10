@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ import static org.testng.Assert.*;
 public class InputSidesTest {
 
     ReadXML readXML;
-    private final String DATAPATH = "E:\\TAT-homeworks\\Task 12 (Triangle)\\src\\test\\java\\data_provider.xml";
+    private final String DATAPATH = "src" + File.separator + "test" + File.separator + "java" + File.separator + "data_provider.xml";
     private final String POSITIVEINPUT = "positiveInput";
     private final String NEGATIVEINPUT = "negativeInput";
     ArrayList<BigDecimal> sides;

@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import static org.testng.Assert.*;
 public class TriangleTest {
 
     ReadXML readXML;
-    private final String DATAPATH = "E:\\TAT-homeworks\\Task 12 (Triangle)\\src\\test\\java\\data_provider.xml";
+    private final String DATAPATH = "src" + File.separator + "test" + File.separator + "java" + File.separator + "data_provider.xml";
     private final String CONSTRUCTORPOSITIVE = "constructorPositive";
     private final String CONSTRUCTORNEGATIVE = "constructorNegative";
     private final String TRIANGLETYPE = "triangleType";
@@ -46,30 +47,30 @@ public class TriangleTest {
     }
 
     @Test(dataProvider = "positive test constructor of class")
-    public void positiveTestRightValuesConstructor(String expected, double a, double b, double c) throws Exception {
+    public void positiveTestRightValuesConstructor(String expected, BigDecimal a, BigDecimal b, BigDecimal c) throws Exception {
         ArrayList<BigDecimal> sides = new ArrayList<>();
-        sides.add(new BigDecimal(a));
-        sides.add(new BigDecimal(b));
-        sides.add(new BigDecimal(c));
+        sides.add(a);
+        sides.add(b);
+        sides.add(c);
         triangle = new Triangle(sides);
         assertTrue(triangle.getMessage().equals(expected));
     }
 
     @Test(dataProvider = "negative test checkTriangle with wrong values", expectedExceptions = Exception.class)
-    public void negativeTestWrongValuesConstructor(double a, double b, double c) throws Exception {
+    public void negativeTestWrongValuesConstructor(BigDecimal a, BigDecimal b, BigDecimal c) throws Exception {
         ArrayList<BigDecimal> sides = new ArrayList<>();
-        sides.add(new BigDecimal(a));
-        sides.add(new BigDecimal(b));
-        sides.add(new BigDecimal(c));
+        sides.add(a);
+        sides.add(b);
+        sides.add(c);
         triangle = new Triangle(sides);
     }
 
     @Test(dataProvider = "positive test getTypeOfTriangle")
-    public void positiveTestRightValuesTypeOfTriangle(String expected, double a, double b, double c) throws Exception {
+    public void positiveTestRightValuesTypeOfTriangle(String expected, BigDecimal a, BigDecimal b, BigDecimal c) throws Exception {
         ArrayList<BigDecimal> sides = new ArrayList<>();
-        sides.add(new BigDecimal(a));
-        sides.add(new BigDecimal(b));
-        sides.add(new BigDecimal(c));
+        sides.add(a);
+        sides.add(b);
+        sides.add(c);
         triangle = new Triangle(sides);
         assertTrue(triangle.getTypeOfTriangle().equals(expected));
     }
