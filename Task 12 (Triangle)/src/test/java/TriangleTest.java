@@ -1,11 +1,15 @@
 package test.java;
+
 import main.java.Triangle;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
+
 import static org.testng.Assert.*;
+
 /**
  * Test class "Triangle."
  */
@@ -19,7 +23,7 @@ public class TriangleTest {
     Triangle triangle;
 
     @BeforeClass
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         readXML = new ReadXML(DATAPATH);
     }
 

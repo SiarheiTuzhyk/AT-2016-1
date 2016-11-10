@@ -1,10 +1,14 @@
 package test.java;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
+
 import static org.testng.Assert.*;
+
 /**
  * Test class "InputSides".
  */
@@ -18,7 +22,7 @@ public class InputSidesTest {
     ArrayList<BigDecimal> sidesExpected;
 
     @BeforeClass
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         readXML = new ReadXML(DATAPATH);
     }
 

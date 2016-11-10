@@ -1,16 +1,19 @@
 package test.java;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+
 /**
  * Class for read XML file with data for our tests.
  *
  * @author Siarhei Tuzhyk
- * @since 10.11.2016
  * @version 1.0
+ * @since 10.11.2016
  */
 public class ReadXML {
 
@@ -33,6 +36,7 @@ public class ReadXML {
 
     /**
      * Constructor of ReadXML, in which parse xml.
+     *
      * @param dataPath path to xml file.
      * @throws Exception if have problems with creating objects.
      */
@@ -45,6 +49,7 @@ public class ReadXML {
 
     /**
      * Method for getting data from xml depending on the tag.
+     *
      * @param tag object of xml.
      * @return all data, which contain this tag.
      * @throws Exception if have problems with reader xml file.
@@ -69,6 +74,7 @@ public class ReadXML {
 
     /**
      * Method for getting data in certain line of tag object.
+     *
      * @param attributes NamedNodeMap object.
      * @return data from certain line.
      */
@@ -82,6 +88,7 @@ public class ReadXML {
 
     /**
      * Method for getting data in certain line of tags "positiveConstructor" or "triangleType".
+     *
      * @param attributes NamedNodeMap object.
      * @return data from certain line.
      */
@@ -96,6 +103,7 @@ public class ReadXML {
 
     /**
      * Method for getting data in certain line of tag "negativeConstructor".
+     *
      * @param attributes NamedNodeMap object.
      * @return data from certain line.
      */
