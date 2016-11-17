@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Transport Suite">
+    <test name="Car Test">
+        <classes>
+            <class name="Movement.CarTest"/>
+        </classes>
+    </test> <!-- Car Test -->
+    <test name="Bus Test">
+        <classes>
+            <class name="Movement.BusTest"/>
+        </classes>
+    </test> <!-- Bus Test -->
+    <test name="Bicycle Test">
+        <classes>
+            <class name="Movement.BicycleTest"/>
+        </classes>
+    </test> <!-- Bicycle Test -->
+    <test name="Pedestrian Test">
+        <classes>
+            <class name="Movement.PedestrianTest"/>
+        </classes>
+    </test> <!-- Pedestrian Test -->
+</suite> <!-- Transport Suite -->
