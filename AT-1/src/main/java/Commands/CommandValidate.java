@@ -72,13 +72,15 @@ public class CommandValidate {
     }
 
     /**
-     * @param enteredWords
-     * @param symbols
-     * @return
+     * Method for searching symbols at string.
+     *
+     * @param enteredString string for searching.
+     * @param symbols symbols for search in string.
+     * @return number of occurrences.
      */
-    private static int checkSymbolsAtString(String enteredWords, String symbols) {
+    private static int checkSymbolsAtString(String enteredString, String symbols) {
         Pattern pattern = Pattern.compile(symbols);
-        Matcher matcher = pattern.matcher(enteredWords);
+        Matcher matcher = pattern.matcher(enteredString);
         int count = 0;
         if (matcher.find()) {
             count++;
