@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <commands command="open" url="http://stackoverflow.com/" expected="5"/>
+    <commands command="checkLinkPresentByHref"  expected="href"/>
+    <commands command="checkLinkPresentByName" expected="name"/>
+    <commands command="checkPageTitle" expected="Stack Overflow"/>
+    <commands command="checkPageContains" expected="Search"/>
+    <commands command="open" url="http://www.google.com/" expected="4"/>
+    <commands command="checkPageTitle" expected="Google"/>
+    <commands command="checkPageContains" expected="Search"/>
+</data>
