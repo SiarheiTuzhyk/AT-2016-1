@@ -1,1 +1,1 @@
---command=open "http://stackoverflow.com/" "3" --command=checkPageTitle "Stack overflow" --command=open "https://www.google.com/" "3" --command=checkPageContains "Google"
+--command=open "http://stackoverflow.com/" "3" --command=checkPageTitle "Stack overflow" --command=open "https://www.google.com/" "3" --command=checkPageContains "Google" --command=hi "hehe" "hoho"

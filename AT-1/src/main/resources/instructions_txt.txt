@@ -1,6 +1,6 @@
 checkPageTitle "Stack Overflow"
 checkPageContains "Search in google"
-open "http://stackoverflow.com/" "6"
+open "http://m.vk.com" "6"
 checkPageContains "Stack"
 open "https://www.google.com/" "7"
 checkPageContains "Goo"gle.by"

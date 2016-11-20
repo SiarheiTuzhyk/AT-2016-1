@@ -1,12 +1,14 @@
 package Commands;
+
 import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 /**
  * Class for validate entered commands.
  *
  * @author Siarhei Tuzhyk
- * @version 1.0
+ * @version 1.1
  * @since 20.11.2016
  */
 public class CommandValidate {
@@ -25,23 +27,24 @@ public class CommandValidate {
         if (!command.equals(CommandsConstant.OPEN)) {
             throw new Exception("Input not valid command!");
         }
-
+        if (checkSymbolsAtString(url, " ") > 0) {
+            throw new Exception("Invalid url!");
+        }
+        if (checkSymbolsAtString(url, "http://") == 0
+                && checkSymbolsAtString(url, "https://") == 0) {
+            throw new Exception("Invalid url!");
+        }
         try {
             new BigDecimal(expected);
         } catch (Exception ex) {
             throw new Exception("Expected time is not a number!");
         }
-
-        Pattern pattern = Pattern.compile(" ");
-        Matcher matcher = pattern.matcher(url);
-        int count = 0;
-        while (matcher.find()) {
-            count++;
-        }
-        if (count > 0) {
-            throw new Exception("Invalid url!");
+        if (new BigDecimal(expected).compareTo(BigDecimal.ZERO) == -1
+                || new BigDecimal(expected).compareTo(BigDecimal.ZERO) == -0) {
+            throw new Exception("Expected time isn't less or equals by zero!");
         }
     }
+
 
     /**
      * Method for validate command other command.
@@ -51,6 +54,9 @@ public class CommandValidate {
      * @throws Exception if entered commands have got invalid arguments.
      */
     public static void validateEnteredCommand(String command, String expected) throws Exception {
+        if (command == null || expected == null) {
+            throw new Exception("Argument is null!");
+        }
         switch (command) {
             case CommandsConstant.CHECK_LINK_PRESENT_BY_HREF:
                 break;
@@ -63,5 +69,20 @@ public class CommandValidate {
             default:
                 throw new Exception("Invalid command!");
         }
+    }
+
+    /**
+     * @param enteredWords
+     * @param symbols
+     * @return
+     */
+    private static int checkSymbolsAtString(String enteredWords, String symbols) {
+        Pattern pattern = Pattern.compile(symbols);
+        Matcher matcher = pattern.matcher(enteredWords);
+        int count = 0;
+        if (matcher.find()) {
+            count++;
+        }
+        return count;
     }
 }

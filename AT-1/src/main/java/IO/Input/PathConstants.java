@@ -3,9 +3,9 @@ package IO.Input;
 import java.io.File;
 
 /**
- * Class for path constants.
+ * Class constants, which contains path to data-import files..
  *
- * @author Siarhei tuzhyk
+ * @author Siarhei Tuzhyk
  * @version 1.0
  * @since 20.11.2016
  */
