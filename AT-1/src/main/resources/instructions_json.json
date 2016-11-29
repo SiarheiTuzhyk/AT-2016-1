@@ -1,0 +1,34 @@
+{
+  "commands": [
+    {
+      "name": "open",
+      "url": "http://www.stackoverflow.com",
+      "expected": "5"
+    },
+    {
+      "name": "checkPageContains",
+      "expected": "Google"
+    },
+    {
+      "name": "checkPageTitle",
+      "expected": "Stack overflow"
+    },
+    {
+      "name": "open",
+      "url": "http://www.google.by",
+      "expected": "6"
+    },
+    {
+      "name": "checkLinkPresentByName",
+      "expected": "name"
+    },
+    {
+      "name": "checkLinkPresentByHref",
+      "expected": "href"
+    },
+    {
+      "name": "checkPageTitle",
+      "expected": "Google"
+    }
+  ]
+}

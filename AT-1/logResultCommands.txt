@@ -1,0 +1,14 @@
+! [checkPageTitle "Stack Overflow"] 0.066s
+! [checkPageContains "Search in google"] 0.054s
++ [open "http://stackoverflow.com/" "6"] 4.754s
++ [checkPageContains "Stack"] 0.073s
++ [open "https://www.google.com/" "7"] 2.086s
+! [checkPageContains "Goo"gle.by"] 0.075s
+! [checkPageTitle "Stack Overflow"] 0.024s
++ [checkPageTitle "Google"] 0.015s
+! [checkLinkPresentByHref "google"] 0.091s
+! [checkLinkPresentByName "/?ei=bY4wWPOMJNGv8weV553oDA"] 0.207s
+Total tests: 10
+Passed/Failed: 4/6
+Total time: 7.445s
+Average time: 0.745s
